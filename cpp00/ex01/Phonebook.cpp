@@ -20,16 +20,16 @@ int Phonebook::_tableDisplay()
         std::cout << "No contacts to display" << std::endl;
         return 0;
     }
-    std::cout << "--------------------------------------------------" << "\n";
+    std::cout << "---------------------------------------------" << "\n";
     for (int    i = 0; i < _num_cont; i++)
     {
         std::cout << "|" << std::setw(10) << std::right << i;
         std::cout << "|" << std::setw(10) << std::right << str_cut(_contact[i].getFirst());
         std::cout << "|" << std::setw(10) << std::right << str_cut(_contact[i].getLast());
-        std::cout << "|" << std::setw(10) << std::right << str_cut(_contact[i].getNumber());
+        std::cout << "|" << std::setw(10) << std::right << str_cut(_contact[i].getNick());
         std::cout << "|" << std::endl;
     }
-    std::cout << "--------------------------------------------------" << "\n";
+    std::cout << "---------------------------------------------" << "\n";
     return 1;
 }
 

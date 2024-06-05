@@ -10,18 +10,22 @@ NAME 	= megaphone
 all: $(NAME)
 
 $(NAME): $(OBJ)
+	@echo "Compiling"
 	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
+#@echo "Compiling"
 	@$(CC) $(CXXFLAGS) -c -o $@ $<
 
 $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)
 
 clean:
+	@echo "Removing $(OBJ_DIR)"
 	@rm -rf $(OBJ_DIR)
 
 fclean: clean
+	@echo "Removing $(NAME)"
 	@rm -rf $(NAME)
 
 re: fclean all

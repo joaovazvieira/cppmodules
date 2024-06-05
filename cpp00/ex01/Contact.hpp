@@ -2,9 +2,10 @@
 #define CONTACT_HPP
 
 #include <iostream>
-#include <string.h>
+#include <string>
 #include <iomanip>
 #include <sstream>
+#include <ctype.h>
 
 class Contact
 {
@@ -18,7 +19,7 @@ class Contact
 
     public:
         void    init();
-        bool    valid();
+        bool    valid();	
         std::string     getFirst();
         std::string     getLast();
         std::string     getNick();
