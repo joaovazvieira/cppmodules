@@ -4,7 +4,7 @@ int	main()
 {
 	Harl	chad = Harl();
 
-	std::string	input[4] = {"debug", "info", "warning", "error"};
+	std::string	input[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 
 	for (int i = 0; i < 4; i++)
 		chad.complain(input[i]);

@@ -10,10 +10,11 @@ NAME	=	Address
 all: $(NAME)
 
 $(NAME): $(OBJ)
+	@echo Compiling
 	@$(CC) $(CFLAGS) $(INC) $(OBJ) -o $(NAME)
 
 $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
-	@echo Compiling
+# @echo Compiling
 	@$(CC) $(CFLAGS) -c -o $@ $<
 
 $(OBJ_DIR):

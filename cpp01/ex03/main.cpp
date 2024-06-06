@@ -2,24 +2,24 @@
 #include "HumanB.hpp"
 #include "Weapon.hpp"
 
-int	main(void)
+int main()
 {
 	{
-		Weapon	club = Weapon("crude spiked club");
-		HumanA	bob("bob", club);
-		bob.attack();
-		club.setType("some other type of club");
-		bob.attack();
+	Weapon club = Weapon("crude spiked club");
+	HumanA bob("Bob", club);
+	bob.attack();
+	club.setType("some other type of club");
+	bob.attack();
 	}
 	{
-		Weapon	club = Weapon("crude spiked club");
-		Weapon	dagger = Weapon("assasins dagger");
-		HumanB	jim("jim");
-		// jim.setWeapon(club);
-		jim.attack();
-		dagger.setType("bloody dagger");
-		jim.setWeapon(dagger);
-		jim.attack();
+	Weapon club = Weapon("crude spiked club");
+	HumanB jim("Jim");
+	jim.attack(); // to test should be unarmed
+	jim.setWeapon(club);
+	jim.attack();
+	club.setType("some other type of club");
+	jim.attack();
 	}
+
 	return 0;
 }

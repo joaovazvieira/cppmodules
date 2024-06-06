@@ -36,7 +36,7 @@ void	Harl::_error(void)
 
 void	Harl::complain(std::string level)
 {
-	std::string		input[4] = {"debug", "info", "warning", "error"};
+	std::string		input[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	void			(Harl::*func[4])(void) = {&Harl::_debug, &Harl::_info, &Harl::_warning, &Harl::_error};
 	int				i = 0;
 
@@ -45,7 +45,7 @@ void	Harl::complain(std::string level)
 	if (i < 4)
 		(this->*func[i])();
 	else
-		std::cout << "Chose a level plz" << level << "\n";
+		std::cout << "Chose a level plz " << level << "\n";
 	return ;
 }
 
