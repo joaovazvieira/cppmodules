@@ -24,31 +24,29 @@ int	main(void)
 	" energy = " << Diamond.getEnergyPoints() << std::endl;
 	std::cout << std::endl;
 
-
-	
-	// for (int i = 0; i < 100; i++)
-	// {
-	// 	if (SlapTrap.getHitPoints() <= 0 || PunchTrap.getHitPoints() <= 0)
-	// 		break ;
-	// std::cout << "\n";
-	// SlapTrap.attack("Player");
-	// PunchTrap.takeDamage(SlapTrap.getAtkDamage());
-	// KickTrap.attack("Player");
-	// PunchTrap.takeDamage(KickTrap.getAtkDamage());
-	// std::cout << "\n";
-	// if (SlapTrap.getHitPoints() <= 0 || PunchTrap.getHitPoints() <= 0)
-	// 		break ;
-	// PunchTrap.attack("Npc");
-	// PunchTrap.attack("Boss");
-	// SlapTrap.takeDamage(PunchTrap.getAtkDamage());
-	// KickTrap.takeDamage(PunchTrap.getAtkDamage());
-	// KickTrap.highFivesGuys();
-	// std::cout << "\n";
-	// if (SlapTrap.getHitPoints() <= 0 || PunchTrap.getHitPoints() <= 0)
-	// 		break ;
-	// SlapTrap.beRepaired(3);
-	// PunchTrap.beRepaired(2);
-	// }
+	for (int i = 0; i < 100; i++)
+	{
+		if (SlapTrap.getHitPoints() <= 0 || PunchTrap.getHitPoints() <= 0)
+			break ;
+	std::cout << "\n";
+	SlapTrap.attack("Player");
+	PunchTrap.takeDamage(SlapTrap.getAtkDamage());
+	KickTrap.attack("Player");
+	PunchTrap.takeDamage(KickTrap.getAtkDamage());
+	std::cout << "\n";
+	if (SlapTrap.getHitPoints() <= 0 || PunchTrap.getHitPoints() <= 0)
+			break ;
+	PunchTrap.attack("Npc");
+	PunchTrap.attack("Boss");
+	SlapTrap.takeDamage(PunchTrap.getAtkDamage());
+	KickTrap.takeDamage(PunchTrap.getAtkDamage());
+	KickTrap.highFivesGuys();
+	std::cout << "\n";
+	if (SlapTrap.getHitPoints() <= 0 || PunchTrap.getHitPoints() <= 0)
+			break ;
+	SlapTrap.beRepaired(3);
+	PunchTrap.beRepaired(2);
+	}
 	PunchTrap.guardGate();
 	std::cout << "\n";
 	return 0;

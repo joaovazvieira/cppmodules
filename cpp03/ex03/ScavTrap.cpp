@@ -2,6 +2,7 @@
 
 ScavTrap::ScavTrap() : ClapTrap()
 {
+	_energyPoints = 50;
 	std::cout << "ScavTrap constructor called" << "\n";
 }
 
