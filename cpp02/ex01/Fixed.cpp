@@ -16,13 +16,15 @@ Fixed::Fixed(const Fixed& point)
 
 Fixed::Fixed(const int intRaw)
 {
-	_rawBits = intRaw * (1 << _bits);
+	_rawBits = intRaw * (1 << _bits); // 1 << _bits is the same as 2^_bits
 	std::cout << "Int constructor called" << "\n";
 }
 
-Fixed::Fixed(const float floatRaw)
+Fixed::Fixed(const float floatRaw) 
 {
-	_rawBits = roundf(floatRaw * (1 << _bits));
+	_rawBits = roundf(floatRaw * (1 << _bits)); 
+	// roundf() -> rounds the value up to the nearest integer value
+	// 1 << _bits it's a left bit operation, when 1 is sifted 8 bits it's the same as 256, same as multiply 1 by 2^8
 	std::cout << "Float constructor called" << "\n";
 }
 

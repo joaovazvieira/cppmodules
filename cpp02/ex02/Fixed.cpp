@@ -41,7 +41,7 @@ Fixed::~Fixed()
 int Fixed::toInt(void) const { return _rawBits >> _bits; }
 
 float Fixed::toFloat(void) const { return (float)getRawBits() / (1 << _bits); }
-
+// coverts the fixed-point number to a floating-point number, if getRawBits resturns 256, it will return 1.0
 int Fixed::getRawBits(void) const { return _rawBits; }
 
 void Fixed::setRawBits(int const raw) { this->_rawBits = raw; }
@@ -82,7 +82,7 @@ Fixed Fixed::operator/(const Fixed& point) const
 {
 	Fixed	div;
 
-	div.setRawBits((this->getRawBits() / point.getRawBits()) << _bits);
+	div.setRawBits((this->getRawBits() << _bits) / point.getRawBits());
 	return div;
 }
 
@@ -119,7 +119,7 @@ bool Fixed::operator>(const Fixed& point) const
 }
 
 // increment and decrement operators
-
+// operator increment or decrement the value by 1
 Fixed& Fixed::operator++(void)
 {
 	_rawBits++;

@@ -82,7 +82,7 @@ Fixed Fixed::operator/(const Fixed& point) const
 {
 	Fixed	div;
 
-	div.setRawBits((this->getRawBits() / point.getRawBits()) << _bits);
+	div.setRawBits((this->getRawBits() << _bits) / point.getRawBits());
 	return div;
 }
 
