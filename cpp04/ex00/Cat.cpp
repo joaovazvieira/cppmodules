@@ -2,6 +2,7 @@
 
 Cat::Cat() : Animal()
 {
+	this->_type = "Cat";
 	std::cout << "Cat default constructor called" << "\n";
 }
 

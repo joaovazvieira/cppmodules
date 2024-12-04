@@ -4,38 +4,38 @@
 
 int main()
 {
-// 	{
-// 	const Animal* dog = new Dog();
-// 	const Animal* cat = new Cat();
-// 	const Animal* animal = new Animal();
-// std::cout << "\n";
-// 	std::cout << dog->getType() << " " << "\n";
-// 	std::cout << cat->getType() << " " << "\n";
-// 	std::cout << animal->getType() << " " << "\n";
-// std::cout << "\n";
-// 	dog->makeSound(); // expected output: Woof Woof
-// 	cat->makeSound(); // expected output: Meow Meow
-// 	animal->makeSound(); // expected output: Some sound
-// std::cout << "\n";
-// 	delete dog;
-// 	delete cat;
-// 	delete animal;
-// std::cout << "\n";
-// 	}
 	{
-
-	Dog* newDog = new Dog();
-	Dog* newDog2 = NULL;
-
-	newDog2 = newDog;
-	std::cout << newDog->getType();
+	const Animal* dog = new Dog();
+	const Animal* cat = new Cat();
+	const Animal* animal = new Animal();
 std::cout << "\n";
-	newDog2->makeSound(); // expected output: Woof Woof
-	std::cout << newDog << "\n" << newDog2 << "\n"; // expected output: same address
+	std::cout << dog->getType() << " " << "\n";
+	std::cout << cat->getType() << " " << "\n";
+	std::cout << animal->getType() << " " << "\n";
 std::cout << "\n";
-	delete newDog;
+	dog->makeSound(); // expected output: Woof Woof
+	cat->makeSound(); // expected output: Meow Meow
+	animal->makeSound(); // expected output: Some sound
+std::cout << "\n";
+	delete dog;
+	delete cat;
+	delete animal;
 std::cout << "\n";
 	}
+	// {
+
+// 	Dog* newDog = new Dog();
+// 	Dog* newDog2 = NULL;
+
+// 	newDog2 = newDog;
+// 	std::cout << newDog->getType();
+// std::cout << "\n";
+// 	newDog2->makeSound(); // expected output: Woof Woof
+// 	std::cout << newDog << "\n" << newDog2 << "\n"; // expected output: same address
+// std::cout << "\n";
+// 	delete newDog;
+// std::cout << "\n";
+// 	}
 // 	{
 	
 // 	Cat* newCat = new Cat();

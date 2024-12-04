@@ -6,11 +6,11 @@ SRCS	=	main.cpp\
 			Cat.cpp\
 			Dog.cpp\
 			Brain.cpp\
-			Animal.cpp\
+			AAnimal.cpp\
 			WrongCat.cpp\
 			WrongAnimal.cpp\
 
-INC		=	Animal.hpp Cat.hpp Dog.hpp WrongCat.hpp WrongAnimal.hpp Brain.hpp
+INC		=	AAnimal.hpp Cat.hpp Dog.hpp WrongCat.hpp WrongAnimal.hpp Brain.hpp
 OBJ		=	$(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR	=	obj
 NAME	=	Animal
