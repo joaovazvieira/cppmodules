@@ -6,25 +6,22 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/04 13:16:46 by jovieira      #+#    #+#                 */
-/*   Updated: 2024/12/04 14:52:09 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/01/06 14:48:54 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(){}
-
-Bureaucrat::Bureaucrat(std::string name, int grade): _name(name), _grade(grade)
-{}
+Bureaucrat::Bureaucrat(std::string name, int grade): _name(name), _grade(grade){}
 Bureaucrat::Bureaucrat(Bureaucrat const &copy): _name(copy._name), _grade(copy._grade){}
-
 Bureaucrat::~Bureaucrat(){}
 
-Bureaucrat &Bureaucrat::operator=(Bureaucrat const &og)
+Bureaucrat &Bureaucrat::operator=(Bureaucrat const &src)
 {
-	if (this == &og)
+	if (this == &src)
 		return (*this);
-	_grade = og._grade;
+	_grade = src._grade;
 	return (*this);
 }
 
@@ -66,4 +63,20 @@ std::ostream &operator<<(std::ostream &out, Bureaucrat const &b)
 {
 	out << b.getName() << ", bureaucrat grade " << b.getGrade() << std::endl;
 	return (out);
+}
+
+void Bureaucrat::signForm(Form *form)
+{
+	if (form->getGradeSign() < _grade)
+	{
+		std::cout << _name << " cannot sign " << form->getName() << " because his grade is too low" << std::endl;
+		return ;
+	}
+	if (form->getSigned())
+	{
+		std::cout << _name << " cannot sign " << form->getName() << " because the form is already signed" << std::endl;
+		return ;
+	}
+	form->beSigned(*this);
+	std::cout << _name << " signs " << form->getName() << std::endl;
 }

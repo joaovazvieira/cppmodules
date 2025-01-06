@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/04 13:06:01 by jovieira      #+#    #+#                 */
-/*   Updated: 2024/12/04 14:42:47 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/01/06 14:41:16 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 
 #include <iostream>
 #include <string>
+#include "Form.hpp"
+
+class Form;
 
 class Bureaucrat
 {
@@ -37,12 +40,13 @@ class Bureaucrat
 		Bureaucrat(Bureaucrat const &copy);
 		~Bureaucrat();
 
-		Bureaucrat &operator=(Bureaucrat const &og);
+		Bureaucrat &operator=(Bureaucrat const &src);
 		std::string const &getName() const;
 		int getGrade() const;
 
 		void incrementGrade();
 		void decrementGrade();
+		void signForm(Form *form);
 	
 };
 

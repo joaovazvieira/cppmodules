@@ -6,7 +6,7 @@
 #    By: jovieira <jovieira@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2024/12/04 13:03:11 by jovieira      #+#    #+#                  #
-#    Updated: 2024/12/04 14:44:42 by jovieira      ########   odam.nl          #
+#    Updated: 2025/01/06 14:49:47 by jovieira      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,9 @@ CFLAGS	=	-Wall -Werror -Wextra -std=c++98 -g
 
 SRCS	=	main.cpp\
 			Bureaucrat.cpp\
+			Form.cpp\
 
-INC		=	Bureaucrat.hpp
+INC		=	Bureaucrat.hpp Form.hpp
 OBJ		=	$(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR	=	obj
 NAME	=	Bureaucrat
