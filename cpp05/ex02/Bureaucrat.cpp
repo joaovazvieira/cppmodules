@@ -6,15 +6,13 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/04 13:16:46 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/02/05 17:37:13 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/02/06 14:36:06 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat()
-{}
-
+Bureaucrat::Bureaucrat(){}
 Bureaucrat::Bureaucrat(std::string name, int grade): _name(name), _grade(grade)
 {
 	if (_grade < 1)
@@ -23,16 +21,14 @@ Bureaucrat::Bureaucrat(std::string name, int grade): _name(name), _grade(grade)
 		throw GradeTooLowException();
 	std::cout << "Bureaucrat constructor called" << "\n";
 }
-Bureaucrat::Bureaucrat(Bureaucrat const &copy): _name(copy._name), _grade(copy._grade)
-{}
+Bureaucrat::Bureaucrat(Bureaucrat const &copy): _name(copy._name), _grade(copy._grade){}
+Bureaucrat::~Bureaucrat(){}
 
-Bureaucrat::~Bureaucrat()
-{}
-
-Bureaucrat &Bureaucrat::operator=(Bureaucrat const &oldBureaucrat)
+Bureaucrat &Bureaucrat::operator=(Bureaucrat const &src)
 {
-	if (this != &oldBureaucrat)
-		this->_grade = oldBureaucrat._grade;
+	if (this == &src)
+		return (*this);
+	_grade = src._grade;
 	return (*this);
 }
 
@@ -74,4 +70,30 @@ std::ostream &operator<<(std::ostream &out, Bureaucrat const &b)
 {
 	out << b.getName() << ", bureaucrat grade " << b.getGrade() << std::endl;
 	return (out);
+}
+
+void Bureaucrat::signForm(AForm *form)
+{
+	try
+	{
+		form->beSigned(*this);
+		std::cout << _name << " signs " << form->getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << _name << " cannot sign " << form->getName() << " because: " << e.what() << '\n';
+	}
+}
+
+void	Bureaucrat::executeForm(const AForm &form)
+{
+	try
+	{
+		form.Execute(*this);
+		std::cout << _name << " executes " << form.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << _name << " cannot execute " << form.getName() << " because: " << e.what() << '\n';
+	}
 }

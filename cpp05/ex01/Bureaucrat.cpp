@@ -6,14 +6,21 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/04 13:16:46 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/01/06 14:48:54 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/02/05 17:59:20 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
 Bureaucrat::Bureaucrat(){}
-Bureaucrat::Bureaucrat(std::string name, int grade): _name(name), _grade(grade){}
+Bureaucrat::Bureaucrat(std::string name, int grade): _name(name), _grade(grade)
+{
+	if (_grade < 1)
+		throw GradeTooHighException();
+	if (_grade > 150)
+		throw GradeTooLowException();
+	std::cout << "Bureaucrat constructor called" << "\n";
+}
 Bureaucrat::Bureaucrat(Bureaucrat const &copy): _name(copy._name), _grade(copy._grade){}
 Bureaucrat::~Bureaucrat(){}
 
@@ -67,16 +74,18 @@ std::ostream &operator<<(std::ostream &out, Bureaucrat const &b)
 
 void Bureaucrat::signForm(Form *form)
 {
-	if (form->getGradeSign() < _grade)
+	// if (form->getGradeSign() < _grade)
+	// {
+	// 	std::cout << _name << " cannot sign " << form->getName() << " because his grade is too low" << std::endl;
+	// 	return ;
+	// }
+	try
 	{
-		std::cout << _name << " cannot sign " << form->getName() << " because his grade is too low" << std::endl;
-		return ;
+		form->beSigned(*this);
+		std::cout << _name << " signs " << form->getName() << std::endl;
 	}
-	if (form->getSigned())
+	catch(const std::exception& e)
 	{
-		std::cout << _name << " cannot sign " << form->getName() << " because the form is already signed" << std::endl;
-		return ;
+		std::cerr << _name << " cannot sign " << form->getName() << " because: " << e.what() << '\n';
 	}
-	form->beSigned(*this);
-	std::cout << _name << " signs " << form->getName() << std::endl;
 }

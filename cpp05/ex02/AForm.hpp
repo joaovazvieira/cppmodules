@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Form.hpp                                           :+:    :+:            */
+/*   AForm.hpp                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/01/06 13:39:10 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/02/05 17:51:19 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/02/06 13:56:02 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 class Bureaucrat;
 
-class Form
+class AForm
 {
 	private:
 		std::string const	_name;
@@ -27,10 +27,26 @@ class Form
 		int const 			_gradeSign;
 		int const 			_gradeExecute;
 		
-		// void _checkGrade(int grade);
 		void	_checkHigh(int grade);
 		void	_checkLow(int grade);
 		
+	
+	public:
+		AForm();
+		AForm(std::string name, int gradeSign, int gradeExecute);
+		AForm(const AForm& src);
+		virtual ~AForm();
+		
+		AForm& operator=(const AForm& src);
+		
+		std::string const &getName() const;
+		bool 	getSigned() const;
+		int 	getGradeSign() const;
+		int 	getGradeExecute() const;
+		
+		void beSigned(const Bureaucrat& src);
+		virtual void Execute(const Bureaucrat &executor) const = 0;
+
 		class IsSigned: public std::exception
 		{
 			virtual const char* what() const throw();
@@ -50,23 +66,8 @@ class Form
 		{
 			virtual const char* what() const throw();
 		};
-	
-	public:
-		Form();
-		Form(std::string name, int gradeSign, int gradeExecute);
-		Form(const Form& src);
-		~Form();
-		
-		Form& operator=(const Form& src);
-		
-		std::string const &getName() const;
-		bool getSigned() const;
-		int getGradeSign() const;
-		int getGradeExecute() const;
-		
-		void beSigned(const Bureaucrat& src);
 };
 
-std::ostream &operator<<(std::ostream &out, Form const &f);
+std::ostream &operator<<(std::ostream &out, AForm const &f);
 
 #endif
