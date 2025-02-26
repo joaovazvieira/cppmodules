@@ -1,37 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   ShrubberyCreationForm.hpp                          :+:    :+:            */
+/*   RobotomyRequestForm.hpp                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/02/06 14:10:40 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/02/26 15:55:27 by jovieira      ########   odam.nl         */
+/*   Created: 2025/02/06 12:48:36 by jovieira      #+#    #+#                 */
+/*   Updated: 2025/02/06 15:01:44 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ShrubberyCreationForm_HPP
-#define ShrubberyCreationForm_HPP
+#ifndef ROBOTOMYREQUESTFORM_HPP
+#define ROBOTOMYREQUESTFORM_HPP
 
 #include <iostream>
 #include "AForm.hpp"
 
-class ShrubberyCreationForm: public AForm
+class RobotomyRequestForm: public AForm
 {
 	private:
 		std::string const	_target;
-
-	public:
-		ShrubberyCreationForm(std::string target);
-		ShrubberyCreationForm(const ShrubberyCreationForm& src);
-		virtual ~ShrubberyCreationForm();
 		
-		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& src);
+	public:
+		RobotomyRequestForm(std::string target);
+		RobotomyRequestForm(const RobotomyRequestForm& src);
+		virtual ~RobotomyRequestForm();
+		
+		RobotomyRequestForm& operator=(const RobotomyRequestForm& src);
 		
 		void	Execute(const Bureaucrat &executor) const;
 		std::string	getTarget() const;
 };
 
-std::ostream &operator<<(std::ostream &output, const ShrubberyCreationForm &src);
+std::ostream &operator<<(std::ostream &output, const RobotomyRequestForm &src);
 
 #endif
