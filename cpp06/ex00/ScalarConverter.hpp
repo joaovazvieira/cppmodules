@@ -6,12 +6,12 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/02/26 16:07:00 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/02/26 16:14:53 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/02/27 12:54:06 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SCALARCONVERTER.HPP
-#define SCALARCONVERTER.HPP
+#ifndef SCALARCONVERTER_HPP
+#define SCALARCONVERTER_HPP
 
 #include <string>
 #include <iostream>
