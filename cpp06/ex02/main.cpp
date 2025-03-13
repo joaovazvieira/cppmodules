@@ -5,42 +5,42 @@
 /*                                                     +:+                    */
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2024/12/04 14:38:17 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/03/12 15:04:48 by jovieira      ########   odam.nl         */
+/*   Created: 2025/03/13 16:07:10 by jovieira      #+#    #+#                 */
+/*   Updated: 2025/03/13 16:22:28 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Bureaucrat.hpp"
+#include "Base.hpp"
+
+Base* generate();
+void identify(Base* p);
+void identify(Base& p);
 
 int main()
 {
-	try
+	// srand(time(0));
+
+	// for (int i = 0; i < 5; ++i)
+	// {
+	// 	Base* obj = generate();
+		
+	// 	std::cout << "Identify with pointer: ";
+	// 	identify(obj);
+
+	// 	std::cout << "Identify with reference: ";
+	// 	identify(*obj);
+
+	// 	delete obj;
+	// }
+	for (int i = 0; i < 4; ++i)
 	{
-		Bureaucrat b("Joe", 3);
-		std::cout << b;
-		b.incrementGrade();
-		std::cout << b;
-		b.incrementGrade();
-		std::cout << b;
-		b.incrementGrade();
-		std::cout << b;
+	Base* base = generate();
+	Base& ref = *base;
+
+	identify(base);
+	identify(ref);
+
+	delete base;
 	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	try
-	{
-		Bureaucrat b("Jay", 149);
-		std::cout << b;
-		b.decrementGrade();
-		std::cout << b;
-		b.decrementGrade();
-		std::cout << b;
-	}
-	catch (std::exception &e)
-	{
-		std::cout << e.what() << std::endl;
-	}
-	return (0);
+	return 0;
 }

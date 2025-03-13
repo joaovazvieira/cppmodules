@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Data.hpp                                           :+:    :+:            */
+/*   Serializer.cpp                                     :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2025/03/03 14:42:36 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/03/13 13:43:46 by jovieira      ########   odam.nl         */
+/*   Created: 2025/03/13 13:47:27 by jovieira      #+#    #+#                 */
+/*   Updated: 2025/03/13 14:15:49 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef DATA_HPP
-#define DATA_HPP
+#include "Serializer.hpp"
 
-#include <iostream>
-
-class Data
+uintptr_t Serializer::serialize(Data* ptr)
 {
-	private:
-		std::string _name;
-		int			_age;
-
-	public:
-		Data(std::string name, int age);
-		Data(const Data& copy, int age);
-		~Data();
-
-		std::string const &getName() const;
-		int getAge() const;
-		Data &operator=(const Data& other);
-};
-
-	std::ostream &operator<<(std::ostream &src ,Data const &out);
-
-#endif
+	return reinterpret_cast<uintptr_t>(ptr);
+}
+Data* Serializer::deserialize(uintptr_t raw)
+{
+	return reinterpret_cast<Data*>(raw);
+}
