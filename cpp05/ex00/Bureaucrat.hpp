@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/04 13:06:01 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/03/12 14:51:43 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/04/10 11:49:23 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ class Bureaucrat
 		{
 			virtual const char* what() const throw();
 		};
+
 };
 
 std::ostream &operator<<(std::ostream &out, Bureaucrat const &b);

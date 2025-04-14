@@ -6,7 +6,7 @@
 #    By: jovieira <jovieira@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2025/02/26 16:05:01 by jovieira      #+#    #+#                  #
-#    Updated: 2025/03/13 16:10:41 by jovieira      ########   odam.nl          #
+#    Updated: 2025/04/14 14:43:31 by jovieira      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS	=	main.cpp\
 INC		=	Base.hpp
 OBJ		=	$(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR	=	obj
-NAME	=	Convert
+NAME	=	Identify
 
 all: $(NAME)
 

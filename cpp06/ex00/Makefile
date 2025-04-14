@@ -6,12 +6,12 @@
 #    By: jovieira <jovieira@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2025/02/26 16:05:01 by jovieira      #+#    #+#                  #
-#    Updated: 2025/02/26 16:06:32 by jovieira      ########   odam.nl          #
+#    Updated: 2025/04/14 12:23:56 by jovieira      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 CC		=	g++
-CFLAGS	=	-Wall -Werror -Wextra -std=c++98 -g
+CFLAGS	=	-Wall -Werror -Wextra -std=c++11 -g
 # CFLAGS	+= -fsanitize=address
 
 SRCS	=	main.cpp\

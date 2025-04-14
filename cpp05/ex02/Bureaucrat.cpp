@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/04 13:16:46 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/02/06 14:36:06 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/04/10 11:51:24 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ Bureaucrat::Bureaucrat(std::string name, int grade): _name(name), _grade(grade)
 Bureaucrat::Bureaucrat(Bureaucrat const &copy): _name(copy._name), _grade(copy._grade){}
 Bureaucrat::~Bureaucrat(){}
 
-Bureaucrat &Bureaucrat::operator=(Bureaucrat const &src)
+Bureaucrat &Bureaucrat::operator=(Bureaucrat const &oldBureauvrat)
 {
-	if (this == &src)
+	if (this == &oldBureauvrat)
 		return (*this);
-	_grade = src._grade;
+	_grade = oldBureauvrat._grade;
 	return (*this);
 }
 

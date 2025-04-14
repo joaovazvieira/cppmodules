@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/03 14:42:36 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/03/13 13:43:46 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/04/14 13:59:05 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,4 @@ class Data
 };
 
 	std::ostream &operator<<(std::ostream &src ,Data const &out);
-
 #endif

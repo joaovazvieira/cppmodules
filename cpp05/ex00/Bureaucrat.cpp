@@ -6,14 +6,13 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2024/12/04 13:16:46 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/02/05 17:37:13 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/04/10 11:37:09 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat()
-{}
+Bureaucrat::Bureaucrat(){}
 
 Bureaucrat::Bureaucrat(std::string name, int grade): _name(name), _grade(grade)
 {
@@ -23,11 +22,9 @@ Bureaucrat::Bureaucrat(std::string name, int grade): _name(name), _grade(grade)
 		throw GradeTooLowException();
 	std::cout << "Bureaucrat constructor called" << "\n";
 }
-Bureaucrat::Bureaucrat(Bureaucrat const &copy): _name(copy._name), _grade(copy._grade)
-{}
+Bureaucrat::Bureaucrat(Bureaucrat const &copy): _name(copy._name), _grade(copy._grade){}
 
-Bureaucrat::~Bureaucrat()
-{}
+Bureaucrat::~Bureaucrat(){}
 
 Bureaucrat &Bureaucrat::operator=(Bureaucrat const &oldBureaucrat)
 {

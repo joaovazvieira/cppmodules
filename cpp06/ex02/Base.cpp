@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/03/13 15:52:33 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/03/13 16:23:09 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/04/14 14:37:47 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,8 @@ Base::~Base()
 
 Base* generate()
 {
-	srand(time(NULL));
 	//r for random
-	int r = rand() % 3;
+	int r = std::rand() % 3;
 	
 	switch (r) {
 		case 0:
@@ -48,30 +47,55 @@ void identify(Base* p)
 
 void identify(Base& p)
 {
-	try {
-		A& a = dynamic_cast<A&>(p);
-		std::cout << "A" << std::endl;
-		(void)a;
-	}
-	catch (std::exception& e)
+	try
 	{
-		(void)e;
-		try {
-			B& b = dynamic_cast<B&>(p);
-			std::cout << "B" << std::endl;
-			(void)b;
-		}
-		catch (std::exception& e)
-		{
-			try {
-				C& c = dynamic_cast<C&>(p);
-				std::cout << "C" << std::endl;
-				(void)c;
-			}
-		catch (std::exception& e)
-		{
-			std::cout << "Unable to catch A, B or C" << std::endl;
-		}
-		}
-	}
+		A& a = dynamic_cast<A&>(p);
+		std::cout << "A was identified" << std::endl;
+		(void)a;
+		return;
+	} catch (const std::exception&){}
+	
+	try
+	{
+		B& b = dynamic_cast<B&>(p);
+		std::cout << "B was identified" << std::endl;
+		(void)b;
+		return;
+	} catch (const std::exception&){}
+	
+	try
+	{
+		C& c = dynamic_cast<C&>(p);
+		std::cout << "C was identified" << std::endl;
+		(void)c;
+		return;
+	} catch (const std::exception&){}
+
+	std::cout << "Unable to catch A, B or C" << std::endl;
+	// try {
+	// 	A& a = dynamic_cast<A&>(p);
+	// 	std::cout << "A" << std::endl;
+	// 	(void)a;
+	// }
+	// catch (std::exception& e)
+	// {
+	// 	(void)e;
+	// 	try {
+	// 		B& b = dynamic_cast<B&>(p);
+	// 		std::cout << "B" << std::endl;
+	// 		(void)b;
+	// 	}
+	// 	catch (std::exception& e)
+	// 	{
+	// 		try {
+	// 			C& c = dynamic_cast<C&>(p);
+	// 			std::cout << "C" << std::endl;
+	// 			(void)c;
+	// 		}
+	// 	catch (std::exception& e)
+	// 	{
+	// 		std::cout << "Unable to catch A, B or C" << std::endl;
+	// 	}
+	// 	}
+	// }
 }

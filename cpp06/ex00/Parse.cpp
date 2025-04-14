@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/02/27 12:13:00 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/02/27 12:51:38 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/04/14 12:27:14 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,14 @@
 
 bool	isInt(std::string input)
 {
-	if (input.length() == 0)
+	if (input.empty())
 		return false;
-	if (input[0] != '+' && input[0] != '-' && !isdigit(input[0]))
-		return false;
-	if (input.find_first_not_of("0123456789", 1) != std::string::npos)
-		return false;
+	if (input[0] == '+' || input[0] == '-')
+		if (input.length() == 0)
+			return false;
+	for (size_t i = 0; i < input.length(); i++)
+		if (!isdigit(input[i]))
+			return false;
 	return true;
 }
 
@@ -36,18 +38,17 @@ bool	isChar(std::string input)
 
 bool isFloat(std::string input)
 {
-	if (input.length() == 0)
-		return false;
 	if (input[0] != '+' && input[0] != '-' && !isdigit(input[0]))
 		return false;
-	if (input.find_first_of("f") != input.length() - 1)
+	if (input.back() != 'f' || input.empty())
 		return false;
-	int dot = 0;
-	for (int i = 0; input[i]; i++)
-		if (input[i] == '.')
-			dot++;
-	if (dot != 1)
-		return false;
+	int i = 0;
+	for (char ch : input)
+	{
+		if (ch == '.')
+			if (++i > 1)
+				return false;
+	}
 	if (input.find_first_not_of("0123456789.f", 1) != std::string::npos)
 		return false;
 	return true;
@@ -55,16 +56,15 @@ bool isFloat(std::string input)
 
 bool isDouble(std::string input)
 {
-	if (input.length() == 0)
+	if ((input[0] != '+' && input[0] != '-' && !isdigit(input[0])) || input.empty())
 		return false;
-	if (input[0] != '+' && input[0] != '-' && !isdigit(input[0]))
-		return false;
-	int dot = 0;
-	for (int i = 0; input[i]; i++)
-		if (input[i] == '.')
-			dot++;
-	if (dot > 1)
-		return false;
+	int i = 0;
+	for (char ch : input)
+	{
+		if (ch == '.')
+			if (++i > 1)
+				return false;
+	}
 	if (input.find_first_not_of("0123456789.", 1) != std::string::npos)
 		return false;
 	return true;
@@ -171,14 +171,14 @@ void	printPseudoLiteral(std::string input)
 	{
 		std::cout << "char: Impossible" << std::endl;
 		std::cout << "int: Impossible" << std::endl;
-		std::cout << "float: inf" << std::endl;
+		std::cout << "float: inff" << std::endl;
 		std::cout << "double: inf" << std::endl;
 	}
 	else if (input == "-inf" || input == "-inff")
 	{
 		std::cout << "char: Impossible" << std::endl;
 		std::cout << "int: Impossible" << std::endl;
-		std::cout << "float: -inf" << std::endl;
+		std::cout << "float: -inff" << std::endl;
 		std::cout << "double: -inf" << std::endl;
 	}
 }
