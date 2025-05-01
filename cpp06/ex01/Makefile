@@ -6,11 +6,11 @@
 #    By: jovieira <jovieira@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2025/02/26 16:05:01 by jovieira      #+#    #+#                  #
-#    Updated: 2025/04/14 12:31:16 by jovieira      ########   odam.nl          #
+#    Updated: 2025/05/01 17:08:43 by jovieira      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-CC		=	g++
+CC		=	c++
 CFLAGS	=	-Wall -Werror -Wextra -std=c++98 -g
 # CFLAGS	+= -fsanitize=address
 

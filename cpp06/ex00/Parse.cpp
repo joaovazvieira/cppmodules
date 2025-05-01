@@ -6,19 +6,24 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/02/27 12:13:00 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/04/14 12:27:14 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/05/01 17:22:37 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Parse.hpp"
 #include <sstream>
 
+int	ft_isprint(int c)
+{
+	return (c >= ' ' && c <= '~');
+}
+
 bool	isInt(std::string input)
 {
 	if (input.empty())
 		return false;
 	if (input[0] == '+' || input[0] == '-')
-		if (input.length() == 0)
+		if (input.length() == 1)
 			return false;
 	for (size_t i = 0; i < input.length(); i++)
 		if (!isdigit(input[i]))
@@ -42,11 +47,15 @@ bool isFloat(std::string input)
 		return false;
 	if (input.back() != 'f' || input.empty())
 		return false;
-	int i = 0;
+	int i_dot = 0;
+	int i_f = 0;
 	for (char ch : input)
 	{
 		if (ch == '.')
-			if (++i > 1)
+			if (++i_dot > 1)
+				return false;
+		if (ch == 'f')
+			if (++i_f > 1)
 				return false;
 	}
 	if (input.find_first_not_of("0123456789.f", 1) != std::string::npos)
@@ -80,10 +89,10 @@ bool isPseudoLiteral(std::string input)
 
 void	printInt(std::string input)
 {
-	std::stringstream ss(input);
-	int i;
-	ss >> i;
-	if (isprint(i))
+	int i = std::stoi(input);
+	if(i > INT_MAX || i < INT_MIN)
+		std::cout << "char: Impossible" << std::endl;
+	if (ft_isprint(static_cast<unsigned int>(i)))
 		std::cout << "char: '" << static_cast<char>(i) << "'" << std::endl;
 	else if (i < 0 || i > 127)
 		std::cout << "char: Impossible" << std::endl;
@@ -97,7 +106,7 @@ void	printInt(std::string input)
 void	printChar(std::string input)
 {
 	int c = input[0];
-	if (isprint(c))
+	if (ft_isprint(static_cast<unsigned int>(c)))
 		std::cout << "char: '" << static_cast<char>(c) << "'" << std::endl;
 	else if (c < 0 || c > 127)
 		std::cout << "char: Impossible" << std::endl;
@@ -110,11 +119,10 @@ void	printChar(std::string input)
 
 void	printFloat(std::string input)
 {
-	std::stringstream ss(input);
-	float f;
-	
-	ss >> f;
-	if (isprint(static_cast<int>(f)))
+	float f = std::stof(input);
+	if(f > INT_MAX || f < INT_MIN)
+		std::cout << "char: Impossible" << std::endl;
+	if (ft_isprint(static_cast<unsigned int>(f)))
 		std::cout << "char: '" << static_cast<char>(f) << "'" << std::endl;
 	else if (f < 0 || f > 127)
 		std::cout << "char: Impossible" << std::endl;
@@ -135,11 +143,10 @@ void	printFloat(std::string input)
 
 void	printDouble(std::string input)
 {
-	std::stringstream ss(input);
-	double d;
-	
-	ss >> d;
-	if (isprint(static_cast<int>(d)))
+	double d = std::stod(input);
+	if(d > INT_MAX || d < INT_MIN)
+		std::cout << "char: Impossible" << std::endl;
+	if (ft_isprint(static_cast<double>(d)))
 		std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
 	else if (d < 0 || d > 127)
 		std::cout << "char: Impossible" << std::endl;

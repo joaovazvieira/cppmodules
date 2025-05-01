@@ -5,22 +5,21 @@
 #                                                      +:+                     #
 #    By: jovieira <jovieira@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
-#    Created: 2025/02/26 16:05:01 by jovieira      #+#    #+#                  #
-#    Updated: 2025/05/01 17:08:48 by jovieira      ########   odam.nl          #
+#    Created: 2025/04/14 15:23:11 by jovieira      #+#    #+#                  #
+#    Updated: 2025/05/01 15:15:16 by jovieira      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-CC		=	c++
-CFLAGS	=	-Wall -Werror -Wextra -std=c++98 -g
+CC		=	g++
+CFLAGS	=	-Wall -Werror -Wextra -std=c++11 -g
 # CFLAGS	+= -fsanitize=address
 
 SRCS	=	main.cpp\
-			Base.cpp
 
-INC		=	Base.hpp
+INC		=	easyfind.hpp
 OBJ		=	$(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR	=	obj
-NAME	=	Identify
+NAME	=	Easyfind
 
 all: $(NAME)
 

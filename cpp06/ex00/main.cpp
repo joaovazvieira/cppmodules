@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/02/27 12:51:47 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/04/10 16:27:05 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/05/01 17:10:07 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,13 @@ int main(int argc, char **argv)
 	}
 
 	std::cout << "----------Input-----------" << std::endl;
-	ScalarConverter::convert(argv[1]);
+	try{
+		ScalarConverter::convert(argv[1]);
+	}
+	catch (const std::exception &e)
+	{
+		std::cerr << "Error, value not allowed" << std::endl;
+	}
 	std::cout << "--------------------------\n" << std::endl;
 
 	// std::cout << "----------Tests-----------" << std::endl;

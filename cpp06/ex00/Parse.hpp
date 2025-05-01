@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/02/27 12:09:58 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/02/27 12:12:21 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/05/01 17:18:42 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define PARING_HPP
 
 #include <iostream>
+#include <limits.h>
 
 bool	isInt(std::string input);
 bool	isChar(std::string input);
