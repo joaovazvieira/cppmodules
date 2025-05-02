@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/04/14 15:14:00 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/04/14 15:27:38 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/05/02 12:10:19 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ T max(const T &a, const T &b){
 }
 
 template <typename T>
-T swap(T &a, T &b){
-	T temp = a;
-	a = b;
-	b = temp;
-	return a;
+T swap(T *a, T *b){
+	T temp = *a;
+	*a = *b;
+	*b = temp;
+	return *a;
 }
 
 #endif

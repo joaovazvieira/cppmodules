@@ -6,11 +6,11 @@
 #    By: jovieira <jovieira@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2025/04/14 15:23:11 by jovieira      #+#    #+#                  #
-#    Updated: 2025/04/17 16:37:11 by jovieira      ########   odam.nl          #
+#    Updated: 2025/05/02 11:59:28 by jovieira      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-CC		=	g++
+CC		=	c++
 CFLAGS	=	-Wall -Werror -Wextra -std=c++98 -g
 # CFLAGS	+= -fsanitize=address
 
@@ -25,7 +25,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo Compiling
-	@$(CC) $(CFLAGS) $(INC) $(OBJ) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 # @echo Compiling
