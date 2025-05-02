@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/02/26 16:13:56 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/02/27 12:52:52 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/05/02 11:48:23 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,7 @@ ScalarConverter&	ScalarConverter::operator=(ScalarConverter const &src)
 
 void	ScalarConverter::convert(std::string input)
 {
-	std::cout << "Convert" << std::endl;
-	for (size_t i = 0; i < input.length(); i++)
-		input[i] = std::tolower(input[i]);
+	std::cout << "Converting\n" << std::endl;
 	if (isInt(input))
 		printInt(input);
 	else if (isChar(input))

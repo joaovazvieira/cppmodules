@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/02/27 12:13:00 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/05/01 17:22:37 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/05/02 11:46:18 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,11 +90,9 @@ bool isPseudoLiteral(std::string input)
 void	printInt(std::string input)
 {
 	int i = std::stoi(input);
-	if(i > INT_MAX || i < INT_MIN)
-		std::cout << "char: Impossible" << std::endl;
-	if (ft_isprint(static_cast<unsigned int>(i)))
+	if (ft_isprint(i))
 		std::cout << "char: '" << static_cast<char>(i) << "'" << std::endl;
-	else if (i < 0 || i > 127)
+	else if((i > INT_MAX || i < INT_MIN) && (i < 0 || i > 127))
 		std::cout << "char: Impossible" << std::endl;
 	else
 		std::cout << "char: Non displayable" << std::endl;
@@ -106,7 +104,7 @@ void	printInt(std::string input)
 void	printChar(std::string input)
 {
 	int c = input[0];
-	if (ft_isprint(static_cast<unsigned int>(c)))
+	if (ft_isprint(c))
 		std::cout << "char: '" << static_cast<char>(c) << "'" << std::endl;
 	else if (c < 0 || c > 127)
 		std::cout << "char: Impossible" << std::endl;
@@ -120,11 +118,9 @@ void	printChar(std::string input)
 void	printFloat(std::string input)
 {
 	float f = std::stof(input);
-	if(f > INT_MAX || f < INT_MIN)
-		std::cout << "char: Impossible" << std::endl;
-	if (ft_isprint(static_cast<unsigned int>(f)))
+	if (ft_isprint(f))
 		std::cout << "char: '" << static_cast<char>(f) << "'" << std::endl;
-	else if (f < 0 || f > 127)
+	else if((f > FLT_MAX || f < FLT_MIN) && (f < 0 || f > 127))
 		std::cout << "char: Impossible" << std::endl;
 	else
 		std::cout << "char: Non displayable" << std::endl;
@@ -144,11 +140,9 @@ void	printFloat(std::string input)
 void	printDouble(std::string input)
 {
 	double d = std::stod(input);
-	if(d > INT_MAX || d < INT_MIN)
-		std::cout << "char: Impossible" << std::endl;
-	if (ft_isprint(static_cast<double>(d)))
+	if (ft_isprint(d))
 		std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
-	else if (d < 0 || d > 127)
+	else if((d > DBL_MAX || d < DBL_MIN) && (d < 0 || d > 127))
 		std::cout << "char: Impossible" << std::endl;
 	else
 		std::cout << "char: Non displayable" << std::endl;

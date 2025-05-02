@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/02/27 12:09:58 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/05/01 17:18:42 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/05/02 11:25:53 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <limits.h>
+#include <float.h>
 
 bool	isInt(std::string input);
 bool	isChar(std::string input);

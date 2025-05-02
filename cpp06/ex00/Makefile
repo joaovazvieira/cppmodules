@@ -6,7 +6,7 @@
 #    By: jovieira <jovieira@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2025/02/26 16:05:01 by jovieira      #+#    #+#                  #
-#    Updated: 2025/05/01 17:20:16 by jovieira      ########   odam.nl          #
+#    Updated: 2025/05/02 11:33:12 by jovieira      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo Compiling
-	@$(CC) $(CFLAGS) $(INC) $(OBJ) -o $(NAME)
+	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 # @echo Compiling
