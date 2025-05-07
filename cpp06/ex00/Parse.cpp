@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/02/27 12:13:00 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/05/02 11:46:18 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/05/07 11:36:44 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ bool isFloat(std::string input)
 		return false;
 	int i_dot = 0;
 	int i_f = 0;
-	for (char ch : input)
+	for (char ch : input) // any character ch, from input
 	{
 		if (ch == '.')
 			if (++i_dot > 1)
