@@ -6,20 +6,19 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/01 14:35:05 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/05/01 15:32:07 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/05/02 13:34:45 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EASYFIND_HPP
 #define EASYFIND_HPP
 
-#include <iostream>
+#include <stdexcept>
 #include <algorithm>
+#include <iostream>
 #include <vector>
 #include <deque>
 #include <list>
-#include <set>
-#include <stdexcept>
 
 class NotFoundexcpetion : public std::exception
 {

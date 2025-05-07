@@ -6,7 +6,7 @@
 #    By: jovieira <jovieira@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2025/04/14 15:23:11 by jovieira      #+#    #+#                  #
-#    Updated: 2025/05/02 13:34:05 by jovieira      ########   odam.nl          #
+#    Updated: 2025/05/02 14:21:49 by jovieira      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,11 +15,12 @@ CFLAGS	=	-Wall -Werror -Wextra -std=c++11 -g
 # CFLAGS	+= -fsanitize=address
 
 SRCS	=	main.cpp\
+			Span.cpp\
 
-INC		=	easyfind.hpp
+INC		=	Span.hpp
 OBJ		=	$(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR	=	obj
-NAME	=	Easyfind
+NAME	=	Span
 
 all: $(NAME)
 

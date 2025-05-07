@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/01 14:34:25 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/05/01 15:31:49 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/05/02 13:34:35 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,5 @@ int main()
 		std::cerr << e.what() << std::endl;
 	}
 	
-	std::cout << '\n';
-
-	std::set<int> contset;
-	for (int i = 0; i < 15; i++)
-		contset.push_back(i);
-	try
-	{
-		std::set<int>::iterator it = easyfind(contset, 10);
-		std::cout << "Found " << *it << std::endl;
-		easyfind(contset, 100);
-	}
-	catch (const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
 	return 0;
 }
