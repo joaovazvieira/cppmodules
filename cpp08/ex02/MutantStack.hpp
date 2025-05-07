@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/07 11:34:04 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/05/07 12:30:50 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/05/07 13:27:03 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 #include <stack>
 #include <deque>
+#include <list>
 
-template<typename T, typename Container = std::deque<T>>
+template<typename T, typename Container = std::list<T>>
 class MutantStack : public std::stack<T, Container>{
 public:
 	using iterator = typename Container::iterator;

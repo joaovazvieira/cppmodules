@@ -6,7 +6,7 @@
 #    By: jovieira <jovieira@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2025/04/14 15:23:11 by jovieira      #+#    #+#                  #
-#    Updated: 2025/05/02 13:34:05 by jovieira      ########   odam.nl          #
+#    Updated: 2025/05/07 13:28:14 by jovieira      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,6 @@ CFLAGS	=	-Wall -Werror -Wextra -std=c++11 -g
 
 SRCS	=	main.cpp\
 
-INC		=	easyfind.hpp
 OBJ		=	$(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR	=	obj
 NAME	=	Easyfind
