@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/07 12:27:06 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/05/07 13:29:07 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/05/07 13:29:45 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@
 //         ++it;
 //     }
 
-//     std::cout << "\nIterating in reverse (top to bottom):" << std::endl;
+//     std::cout << "\nIterating from top to bottom (reverse):" << std::endl;
 //     for (MutantStack<int>::reverse_iterator rit = mstack.rbegin(); rit != mstack.rend(); ++rit) {
 //         std::cout << "  - " << *rit << std::endl;
 //     }
