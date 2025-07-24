@@ -15,11 +15,11 @@ ENV \
 	WP_VERSION=$WP_VERSION \
 	DB_HOST=$DB_HOST
 
-RUN curl -o tools/wait-for-it.sh https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh
-RUN chmod +x tools/wait-fot-it.sh
+# RUN curl -o tools/wait-for-it.sh https://raw.githubusercontent.com/vishnubob/wait-for-it/master/wait-for-it.sh
+# RUN chmod +x tools/wait-fot-it.sh
 
-COPY ./tools/wordpress.sh /wordpress.sh
-RUN chmod +x wordpress.sh
+# COPY ./tools/wordpress.sh /wordpress.sh
+# RUN chmod +x wordpress.sh
 
 RUN apt-get update -y && apt-get upgrade -y
 # 													fastcgi

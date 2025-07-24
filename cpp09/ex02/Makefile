@@ -6,19 +6,19 @@
 #    By: jovieira <jovieira@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2025/04/14 15:23:11 by jovieira      #+#    #+#                  #
-#    Updated: 2025/05/07 13:28:14 by jovieira      ########   odam.nl          #
+#    Updated: 2025/07/23 16:28:45 by jovieira      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 CC		=	c++
 CFLAGS	=	-Wall -Werror -Wextra -std=c++11 -g
-# CFLAGS	+= -fsanitize=address
+CFLAGS	+= -fsanitize=address
 
-SRCS	=	main.cpp\
+SRCS	=	main.cpp PmergeMe.cpp
 
 OBJ		=	$(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR	=	obj
-NAME	=	Easyfind
+NAME	=	PmergeMe
 
 all: $(NAME)
 
