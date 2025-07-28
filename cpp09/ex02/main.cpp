@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/23 16:05:58 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/07/24 11:48:57 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/07/28 17:06:54 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ int main(int argc, char **argv) {
 		return 1;
 	}
 
-	std::vector<int> vec;
-	std::deque<int> deq;
+	std::vector<size_t> vec;
+	std::deque<size_t> deq;
 	
 	
 	for (int i = 1; i < argc; ++i) {

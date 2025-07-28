@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/23 12:21:37 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/07/24 11:47:27 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/07/28 16:43:39 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,15 @@ class PmergeMe {
 	void recursiveSort(Container &large); //, Container &small
 	template<typename Container>
 	void insertSmall(Container &sortedLarge, const Container &small);
+	
 	public:
 		PmergeMe(); // Private constructor to prevent instantiation
 		PmergeMe(const PmergeMe& other); // Copy constructor
 		~PmergeMe(); // Destructor
 		PmergeMe& operator=(const PmergeMe& other); // Assignment operator 
 		
-		void fordJohnsonSort(std::vector<int> &vec);
-		void fordJohnsonSort(std::deque<int> &deq);
+		void fordJohnsonSort(std::vector<size_t> &vec);
+		void fordJohnsonSort(std::deque<size_t> &deq);
 		
 };
 
