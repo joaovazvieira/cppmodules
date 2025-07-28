@@ -6,37 +6,56 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/14 13:44:41 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/05/16 12:56:50 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/07/15 23:00:11 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 
+Bitcoin::Bitcoin() {}
+
+Bitcoin::~Bitcoin() {}
+
 bool Bitcoin::isValidDate(const std::string &date)
 {
+	std::stringstream ss(date);
+	int year, month, day;
+	char garbage;
 	if (date.size() != 10) return false;
 	if (date[4] != '-' || date[7] != '-') return false;
+	
+	ss >> year >> garbage >> month >> garbage >> day;
+	if (ss.fail() || !ss.eof())
+		return false;
+	if (year < 2009 || month < 1 || month > 12 || day < 1)
+		return false;
 
-	int year, month, day;
-	try {
-		year = std::stoi(date.substr(0, 4));
-		month = std::stoi(date.substr(5, 2));
-		day = std::stoi(date.substr(8, 2));
-	} catch (std::exception &e) {
-		return false;
+	int daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+	// Check for leap year and adjust February
+	bool isLeapYear = (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+	if (isLeapYear && month == 2) {
+		daysInMonth[1] = 29;
 	}
-	if (month < 1 || month > 12 || day < 1 || day > 31)
+
+	// Validate day against the correct number of days in the month
+	if (day > daysInMonth[month - 1])
 		return false;
+
 	return true;
 }
 
-bool Bitcoin::isValidValue(const std::string &str, float &value)
+bool Bitcoin::isValidValue(const std::string &str)
 {
+	float value;
 	try {
 		value = std::stof(str);
-		if (value < 0 || value > 1000)
-			return false;
+		if (value < 0)
+			throw BitcoinError("Error: not a positive number.");
+		else if (value > 1000)
+			throw BitcoinError("Error: too large a number.");
 	} catch (std::exception &e){
+		std::cerr << e.what() << std::endl;
 		return false;
 	}
 	return true;
@@ -67,6 +86,7 @@ std::map<std::string, double> Bitcoin::loadData(const std::string &filename)
 	}
 	return db;
 }
+
 double Bitcoin::getCloseRate(const std::map<std::string, double>& db, const std::string &date, double &rate)
 {
 	auto it = db.lower_bound(date);
@@ -81,4 +101,32 @@ double Bitcoin::getCloseRate(const std::map<std::string, double>& db, const std:
 		return true;
 	}
 	return false;
+}
+
+void Bitcoin::init(const char *inputFile, std::map<std::string, double> rateDB) {
+	std::ifstream file(inputFile);
+	std::string line;
+	std::string date;
+	std::string value;
+	
+	if (!file.is_open())
+		throw BitcoinError("Error opening input file.");
+	std::getline(file, line);
+	while (std::getline(file, line)){
+		std::stringstream ss(line);
+		ss >> value;
+		if (isValidDate(line) && isValidValue(value) && (!ss.fail() || !ss.eof())) {
+			date.erase(0, date.find_first_not_of(" \t"));
+			date.erase(date.find_last_not_of(" \t") + 1);
+
+			try {
+				
+			}
+			catch (std::exception &e) {
+				std::cerr << e.what() << line << std::endl;
+			}
+		}
+		else 
+			std::cerr << "Bad input ==> " << line << std::endl;
+	}
 }
