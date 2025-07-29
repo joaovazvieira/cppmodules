@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/08 14:52:28 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/07/15 22:42:34 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/07/29 11:48:06 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class Bitcoin
 	bool isValidDate(const std::string &date);
 	bool isValidValue(const std::string &str);
 	std::map<std::string, double> loadData(const std::string &filename);
-	double getCloseRate(const std::map<std::string, double>& db, const std::string &date, double &rate);
+	bool getCloseRate(const std::map<std::string, double>& db, const std::string &date, double &rate);
 
 	class BitcoinError : public std::exception {
 		private:

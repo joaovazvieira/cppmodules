@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/14 13:44:41 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/07/15 23:00:11 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/07/29 12:12:20 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ std::map<std::string, double> Bitcoin::loadData(const std::string &filename)
 	return db;
 }
 
-double Bitcoin::getCloseRate(const std::map<std::string, double>& db, const std::string &date, double &rate)
+bool Bitcoin::getCloseRate(const std::map<std::string, double>& db, const std::string &date, double &rate)
 {
 	auto it = db.lower_bound(date);
 	if (it != db.end() && it->first == date)
@@ -106,27 +106,72 @@ double Bitcoin::getCloseRate(const std::map<std::string, double>& db, const std:
 void Bitcoin::init(const char *inputFile, std::map<std::string, double> rateDB) {
 	std::ifstream file(inputFile);
 	std::string line;
-	std::string date;
-	std::string value;
+	// std::string date;
+	// std::string value;
 	
 	if (!file.is_open())
 		throw BitcoinError("Error opening input file.");
 	std::getline(file, line);
-	while (std::getline(file, line)){
-		std::stringstream ss(line);
-		ss >> value;
-		if (isValidDate(line) && isValidValue(value) && (!ss.fail() || !ss.eof())) {
+	while (std::getline(file, line)) {
+		try {
+			if (line.empty()) continue;
+			
+			size_t pipe = line.find('|');
+			if (pipe == std::string::npos) {
+				std::cerr << "Error: bad input => " << line << std::endl;
+				continue;
+			}
+			std::string date = line.substr(0, pipe);
+			std::string valueStr = line.substr(pipe + 1);
+
 			date.erase(0, date.find_first_not_of(" \t"));
 			date.erase(date.find_last_not_of(" \t") + 1);
+			valueStr.erase(0, valueStr.find_first_not_of(" \t"));
+			valueStr.erase(valueStr.find_last_not_of(" \t") + 1);
 
-			try {
-				
+			if (!isValidDate(date)) {
+				throw BitcoinError("Bad Date => " + date);
 			}
-			catch (std::exception &e) {
-				std::cerr << e.what() << line << std::endl;
+			
+			if (!isValidValue(valueStr)) {
+				continue;
 			}
+			
+			float value = std::stof(valueStr);
+			double rate;
+			if (getCloseRate(rateDB, date, rate)) {
+				double result = value * rate;
+				std::cout << date << " => " << value << " = " << result << std::endl;
+			} else {
+				std::cerr << "Error: bad input => "<< date << std::endl;
+			}
+		} catch (std::exception &e) {
+			std::cerr << e.what() << std::endl;
 		}
-		else 
-			std::cerr << "Bad input ==> " << line << std::endl;
 	}
+
+
+
+
+
+
+
+	
+	// while (std::getline(file, line)){
+	// 	std::stringstream ss(line);
+	// 	ss >> value;
+	// 	if (isValidDate(line) && isValidValue(value) && (!ss.fail() || !ss.eof())) {
+	// 		date.erase(0, date.find_first_not_of(" \t"));
+	// 		date.erase(date.find_last_not_of(" \t") + 1);
+
+	// 		try {
+				
+	// 		}
+	// 		catch (std::exception &e) {
+	// 			std::cerr << e.what() << line << std::endl;
+	// 		}
+	// 	}
+	// 	else 
+	// 		std::cerr << "Bad input ==> " << line << std::endl;
+	// }
 }

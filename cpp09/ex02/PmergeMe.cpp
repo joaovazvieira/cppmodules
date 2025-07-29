@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/07/23 13:56:48 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/07/28 17:40:06 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/07/29 08:44:17 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void PmergeMe::insertSmall(Container &sortedLarge, const Container &small) {
 		inserted[0] = true;
 	}
 	
-	// Generate Jacobsthal sequence: 1, 3, 5, 11, 21, 43, ...
+	// Generate Jacobsthal sequence: 0, 1, 1, 3, 5, 11, 21, 43, ...
 	std::vector<size_t> jacobsthal = {1};
 	while (jacobsthal.back() < small.size()) {
 		size_t next = jacobsthal.back() + 2 * (jacobsthal.size() > 1 ? jacobsthal[jacobsthal.size() - 2] : 0);
