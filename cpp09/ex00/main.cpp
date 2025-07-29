@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/08 14:52:00 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/07/29 12:22:51 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/07/29 21:20:01 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,14 @@ int main(int argc, char **argv)
 		return 1;
 	}
 
-	Bitcoin bitcoin;
-	std::map<std::string, double> rateDB = bitcoin.loadData("data.csv");
-	if (rateDB.empty())
+	try {
+		Bitcoin bitcoin;
+		std::map<std::string, double> rateDB = bitcoin.loadData("data.csv");
+		if (rateDB.empty())
+			return 1;
+		bitcoin.init(argv[1], rateDB);
+	} catch (std::exception &e) {
 		return 1;
-	bitcoin.init(argv[1], rateDB);
+	}
 	return 0;
 }

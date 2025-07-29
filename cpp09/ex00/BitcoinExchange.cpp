@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/14 13:44:41 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/07/29 12:12:20 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/07/29 22:09:01 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,18 +47,28 @@ bool Bitcoin::isValidDate(const std::string &date)
 
 bool Bitcoin::isValidValue(const std::string &str)
 {
+	std::stringstream ss(str);
 	float value;
 	try {
-		value = std::stof(str);
+		ss >> value;
+		if (ss.fail() || !ss.eof())
+			throw BitcoinError("Error: unvalid value");
 		if (value < 0)
 			throw BitcoinError("Error: not a positive number.");
-		else if (value > 1000)
+		else if (value >= 1000)
 			throw BitcoinError("Error: too large a number.");
 	} catch (std::exception &e){
 		std::cerr << e.what() << std::endl;
 		return false;
 	}
 	return true;
+}
+
+bool compareNumber(std::string &priceStr, double def) {
+	std::stringstream ss(priceStr);
+	double price;
+	ss >> price;
+	return price < def;
 }
 
 std::map<std::string, double> Bitcoin::loadData(const std::string &filename)
@@ -71,11 +81,20 @@ std::map<std::string, double> Bitcoin::loadData(const std::string &filename)
 		std::cerr << "Error opening database file." << std::endl;
 		return db;
 	}
-	
+	std::getline(file, line);
 	while (std::getline(file, line)) {
 		std::stringstream ss(line);
 		std::string date, priceStr;
 		if (std::getline(ss, date, ',') && std::getline(ss, priceStr)){
+			try{
+				if (!isValidDate(date) || compareNumber(priceStr, 0)) {
+					throw BitcoinError("Invalid Database entry");
+				}
+			} catch (std::exception &e) {
+				std::cerr << e.what() << std::endl;
+				db.clear();
+				return db;
+			}
 			try{
 				double price = std::stod(priceStr);
 				db[date] = price;
@@ -106,8 +125,6 @@ bool Bitcoin::getCloseRate(const std::map<std::string, double>& db, const std::s
 void Bitcoin::init(const char *inputFile, std::map<std::string, double> rateDB) {
 	std::ifstream file(inputFile);
 	std::string line;
-	// std::string date;
-	// std::string value;
 	
 	if (!file.is_open())
 		throw BitcoinError("Error opening input file.");
@@ -149,29 +166,4 @@ void Bitcoin::init(const char *inputFile, std::map<std::string, double> rateDB) 
 			std::cerr << e.what() << std::endl;
 		}
 	}
-
-
-
-
-
-
-
-	
-	// while (std::getline(file, line)){
-	// 	std::stringstream ss(line);
-	// 	ss >> value;
-	// 	if (isValidDate(line) && isValidValue(value) && (!ss.fail() || !ss.eof())) {
-	// 		date.erase(0, date.find_first_not_of(" \t"));
-	// 		date.erase(date.find_last_not_of(" \t") + 1);
-
-	// 		try {
-				
-	// 		}
-	// 		catch (std::exception &e) {
-	// 			std::cerr << e.what() << line << std::endl;
-	// 		}
-	// 	}
-	// 	else 
-	// 		std::cerr << "Bad input ==> " << line << std::endl;
-	// }
 }

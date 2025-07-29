@@ -6,7 +6,7 @@
 #    By: jovieira <jovieira@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2025/04/14 15:23:11 by jovieira      #+#    #+#                  #
-#    Updated: 2025/05/08 14:58:22 by jovieira      ########   odam.nl          #
+#    Updated: 2025/07/29 21:15:28 by jovieira      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ SRCS	=	main.cpp\
 
 OBJ		=	$(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR	=	obj
-NAME	=	Btc
+NAME	=	btc
 
 all: $(NAME)
 

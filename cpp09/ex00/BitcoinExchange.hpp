@@ -6,7 +6,7 @@
 /*   By: jovieira <jovieira@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/05/08 14:52:28 by jovieira      #+#    #+#                 */
-/*   Updated: 2025/07/29 11:48:06 by jovieira      ########   odam.nl         */
+/*   Updated: 2025/07/29 22:00:02 by jovieira      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,9 @@ class Bitcoin
 
 	public:
 	Bitcoin();
+	Bitcoin(const Bitcoin &copy) = default;
 	~Bitcoin();
+	Bitcoin &operator=(const Bitcoin &src) = default;
 	
 	void init(const char *file, std::map<std::string, double> rateDB);
 	bool isValidDate(const std::string &date);
