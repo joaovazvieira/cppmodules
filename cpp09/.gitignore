@@ -3,3 +3,5 @@
 *.o
 *.a
 obj
+data.csv
+input.txt
